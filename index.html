@@ -33,6 +33,7 @@
             animation: fadeIn 2s ease-in-out;
             filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 40px rgba(0, 0, 0, 0.5));
             transition: transform 0.5s ease, filter 0.5s ease;
+            cursor: pointer;
         }
 
         .killer-bunny:hover {
@@ -85,8 +86,15 @@
     <div class="container">
         <div class="glow"></div>
         <img src="https://i.ibb.co/dMK3t7j/4328d00292b082b5f8fa1b648d25b666-removebg-preview.png" 
-             alt="Lapin Tueur" class="killer-bunny">
+             alt="Lapin Tueur" class="killer-bunny"
+             onclick="window.open('https://discord.gg/amsUQdUQa7', '_blank')">
     </div>
+
+    <!-- Musique de fond -->
+    <audio autoplay loop>
+        <source src="https://cdn.discordapp.com/attachments/1299564827378847754/1299846801259626526/your_system_has_been_overloaded_by_the_disciples_1.mp3?ex=674e262b&is=674cd4ab&hm=ebf26f1a1b1024e0c469344100db45ddef8a8c95acfd57268a8a535ddff62a09&" type="audio/mpeg">
+        Votre navigateur ne supporte pas la lecture audio.
+    </audio>
 
     <!-- Scripts JavaScript -->
     <script>
