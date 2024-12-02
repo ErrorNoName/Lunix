@@ -32,23 +32,23 @@
             z-index: 10;
         }
 
-        /* Bouton Profil */
+        /* Bouton Profil en thème sombre et blanc */
         .profile-button {
             padding: 20px 40px;
             font-size: 20px;
             font-weight: bold;
-            color: #ffffff;
-            background: linear-gradient(145deg, #5865F2, #6a75ff);
+            color: #000000;
+            background: #ffffff;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.7), 0 0 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .profile-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(88, 101, 242, 1), 0 0 60px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(0, 0, 0, 0.7);
         }
 
         /* Conteneur principal */
@@ -58,12 +58,16 @@
             position: relative;
             width: 100%;
             height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Style de l'image */
         .killer-bunny {
-            width: 300px;
-            height: auto;
+            max-width: 300px;
+            max-height: 300px;
             animation: fadeIn 2s ease-in-out;
             filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 40px rgba(0, 0, 0, 0.5));
             transition: transform 0.5s ease, filter 0.5s ease;
