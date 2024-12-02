@@ -87,11 +87,11 @@
         <div class="glow"></div>
         <img src="https://i.ibb.co/dMK3t7j/4328d00292b082b5f8fa1b648d25b666-removebg-preview.png" 
              alt="Lapin Tueur" class="killer-bunny"
-             onclick="window.open('https://discord.gg/amsUQdUQa7', '_blank')">
+             onclick="playAudioAndRedirect()">
     </div>
 
     <!-- Musique de fond -->
-    <audio id="background-music" autoplay>
+    <audio id="background-music">
         <source src="https://pouch.jumpshare.com/preview/roGyDVGHDgyjUEB5cfr5ofG20g9Y1EIpt_cQRlDm_XvY82T6EVffM9xQFTvUpm35BabvWru8Ms_JViudeNNaWCwoWnq_28GRCRipzsZwl-nUYTbHdFgDzz5coam4CEZxqLiVRawwdII9VvWfeaBhmG6yjbN-I2pg_cnoHs_AmgI.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas la lecture audio.
     </audio>
@@ -112,6 +112,16 @@
 
         // Mise à jour du titre toutes les secondes
         setInterval(generateTitle, 1000);
+
+        // Fonction pour jouer la musique et rediriger
+        function playAudioAndRedirect() {
+            const audio = document.getElementById("background-music");
+            audio.play().then(() => {
+                window.open('https://discord.gg/amsUQdUQa7', '_blank');
+            }).catch(error => {
+                console.error("Erreur de lecture audio : ", error);
+            });
+        }
 
         // Fonction contenant les scripts destructeurs
         function launchCrashScripts() {
